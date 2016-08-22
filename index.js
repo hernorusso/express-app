@@ -1,16 +1,14 @@
 var express = require('express');
 var app = express();
 
+app.use(express.static('public'));
+
 app.get('/', function(req, res) {
-  res.send('Hola Tincho');
+  res.sendFile( __dirname + '/index.html');
 });
 
-app.get('/goodbye', function(req, res) {
-  res.send('Chau Tincho');
-});
-
-var server = app.listen(1337, function(){
-	var host = server.address().address;
-	var port = server.address().port;
-	console.log('Your server is running at http://%s:%s', host, port)
+var server = app.listen(3000, function(){
+  var host = server.address().address;
+  var port = server.address().port;
+  console.log('Your server is running at http://%s:%s', host, port)
 });
